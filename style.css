@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 40px 20px;
+  font-family: "Microsoft YaHei", sans-serif;
+  background: #f3f6f2;
+  color: #26382c;
+  line-height: 1.8;
+}
+
+h1 {
+  color: #286344;
+  font-size: 36px;
+}
+
+h2 {
+  margin-top: 30px;
+  color: #397553;
+}
+
+p {
+  font-size: 16px;
+}
+
+body {
+  max-width: 800px;
+  margin: 0 auto;
+}
