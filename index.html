@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -16,8 +17,61 @@
 
   <h2>我的兴趣</h2>
   <button id="helloButton">点击这里</button>
-<p id="message"></p>
+  <p id="message"></p>
   <p>学习新知识、记录生活、探索有趣的项目。</p>
-<script src="script.js"></script>
+
+  <h2>全站点赞</h2>
+  <p>👍 全站点赞数：<strong id="likeCount">...</strong></p>
+  <button id="likeButton" type="button">点赞</button>
+
+  <script src="script.js"></script>
+
+  <script>
+    // 替换成你自己的 Worker 地址，不要添加 /api/likes
+    const API_BASE = https://site-likes-api.waa629222.workers.dev";
+    const API_URL = API_BASE + "/api/likes";
+
+    const countElement = document.getElementById("likeCount");
+    const likeButton = document.getElementById("likeButton");
+
+    // 获取全站点赞数
+    async function loadLikes() {
+      try {
+        const response = await fetch(API_URL, {
+          cache: "no-store"
+        });
+
+        if (!response.ok) throw new Error("Request failed");
+
+        const data = await response.json();
+        countElement.textContent = data.total;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    // 每点击一次，点赞总数加 1
+    likeButton.addEventListener("click", async () => {
+      likeButton.disabled = true;
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST"
+        });
+
+        if (!response.ok) throw new Error("Request failed");
+
+        const data = await response.json();
+        countElement.textContent = data.total;
+      } catch (error) {
+        console.error(error);
+      } finally {
+        likeButton.disabled = false;
+      }
+    });
+
+    // 页面打开时读取点赞总数
+    loadLikes();
+  </script>
 </body>
 </html>
