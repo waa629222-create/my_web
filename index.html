@@ -36,18 +36,25 @@
   }
 }
     #likeButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 22px;
-    border: none;
-    border-radius: 24px;
-    background: #3b82f6;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.15s ease, background 0.2s ease;
-  }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 24px;
+  background: #3b82f6;
+  color: pink;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+#likeButton .like-icon {
+  display: inline-block;
+  color: #fff;
+  font-size: 20px;
+}
 
   #likeButton:hover {
     background: #2563eb;
@@ -113,11 +120,9 @@
   <p id="message"></p>
   <p>学习新知识、记录生活、探索有趣的项目。</p>
 
-  <h2>全站点赞</h2>
-  <p>👍 全站点赞数：<strong id="likeCount">...</strong></p>
-  <button id="likeButton" type="button">
+ <button id="likeButton" type="button">
   <span class="like-icon">♥</span>
-  <span>点赞</span>
+  <span id="likeCount">...</span>
 </button>
 
   <script src="script.js"></script>
